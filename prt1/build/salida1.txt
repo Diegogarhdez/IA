@@ -1,0 +1,15 @@
+Número de nodos del grafo: 5
+Número de aristas del grafo: 10
+Vértice origen: 1
+Vértice destino: 4
+Iteración 1
+Nodos generados: 1
+Nodos inspeccionados: 1
+Iteración 2
+Nodos generados: 1, 2, 3, 4, 5
+Nodos inspeccionados: 1, 5
+Iteración 3
+Nodos generados: 1, 2, 3, 4, 5
+Nodos inspeccionados: 1, 4, 5
+Camino: 1 - 4
+Costo: 1

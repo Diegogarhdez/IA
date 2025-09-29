@@ -1,4 +1,6 @@
 
+
+
 #include "menu.h"
 
 #include <iostream>
@@ -13,6 +15,8 @@ void Menu() {
 }
 
 void PressAnyKey() {
-    
-
+    std::cout << "Presione cualquier letra para continuar...";
+    char a;
+    std::cin >> a;
+    system("clear");
 }

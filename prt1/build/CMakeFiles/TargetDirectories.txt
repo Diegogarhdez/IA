@@ -1,0 +1,3 @@
+/home/usuario/IA/prt1/build/CMakeFiles/Grafo.dir
+/home/usuario/IA/prt1/build/CMakeFiles/edit_cache.dir
+/home/usuario/IA/prt1/build/CMakeFiles/rebuild_cache.dir
