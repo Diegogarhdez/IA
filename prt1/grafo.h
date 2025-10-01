@@ -14,6 +14,8 @@
 #define GRAFO_H_
 
 #include <algorithm>
+#include <functional>
+#include <iomanip>
 #include <iostream>
 #include <map>
 #include <queue>
@@ -21,246 +23,260 @@
 #include <stack>
 #include <vector>
 
-class Arista {
- public:
-  Arista(int nodo1, int nodo2, double coste)
-      : nodo1_(nodo1), nodo2_(nodo2), coste_(coste) {}
-  Arista() : nodo1_(0), nodo2_(0), coste_(0.0) {}
-  Arista(const Arista& other)
-      : nodo1_(other.nodo1_), nodo2_(other.nodo2_), coste_(other.coste_) {}
-
-  bool operator<(const Arista& other) const {
-    if (nodo1_ != other.GetNodo1()) return nodo1_ < other.GetNodo1();
-    if (nodo2_ != other.GetNodo2()) return nodo2_ < other.GetNodo2();
-    return coste_ < other.GetCoste();
-  }
-
-  Arista operator=(const Arista& other) {
-    if (this == &other) return *this;
-    nodo1_ = other.nodo1_;
-    nodo2_ = other.nodo2_;
-    coste_ = other.coste_;
-    return *this;
-  }
-
-  // Getters
-  inline int GetNodo1() const { return nodo1_; }
-  inline int GetNodo2() const { return nodo2_; }
-  inline double GetCoste() const { return coste_; }
-
-  // atributos privados
- private:
-  int nodo1_;
-  int nodo2_;
-  double coste_;
-};
-
 class Grafo {
  public:
-  Grafo() {}
-  Grafo(const std::set<Arista>& grafo) : vertices(grafo.size()) {
-    for (const auto& arista : grafo) {
-      grafo_.insert(arista);
+  Grafo(int n = 0) : vertices(n), matriz_(n, std::vector<double>(n, -1.0)) {}
+
+  void InsertarArista(int i, int j, double coste) {
+    if (i >= 1 && i <= vertices && j >= 1 && j <= vertices && i != j) {
+      matriz_[i - 1][j - 1] = coste;
+      matriz_[j - 1][i - 1] = coste;  // grafo no dirigido
     }
   }
 
-  void InsertarArista(const Arista& arista) { grafo_.insert(arista); }
-  void EliminarArista(const Arista& arista) { grafo_.erase(arista); }
+  void EliminarArista(int i, int j) {
+    if (i >= 1 && i <= vertices && j >= 1 && j <= vertices) {
+      matriz_[i - 1][j - 1] = -1.0;
+      matriz_[j - 1][i - 1] = -1.0;
+    }
+  }
+
   void BusquedaProfundidad(int nodo_inicio, int nodo_fin, std::ostream& os);
   void BusquedaAmplitud(int nodo_inicio, int nodo_fin, std::ostream& os);
 
-  inline std::set<Arista> GetGrafo() const { return grafo_; }
   inline int GetNumVertices() const { return vertices; }
-  inline void SetNumVertices(int n) { vertices = n; }
+  inline void SetNumVertices(int n) {
+    vertices = n;
+    matriz_.assign(n, std::vector<double>(n, -1.0));
+  }
 
-  // atributos privados
+  inline const std::vector<std::vector<double>>& GetMatriz() const {
+    return matriz_;
+  }
+
+  // Cuenta aristas (no dirigidas, recorre solo i<j)
+  int ContarAristas() const {
+    int c = 0;
+    for (int i = 0; i < vertices; ++i)
+      for (int j = i + 1; j < vertices; ++j)
+        if (matriz_[i][j] != -1.0) ++c;
+    return c;
+  }
+
  private:
-  std::set<Arista> grafo_;
-  int vertices = grafo_.size();
+  int vertices;
+  std::vector<std::vector<double>> matriz_;
+
+  // Suma los pesos de un camino (vector de nodos 1..n)
+  double CalcularCosteCamino(const std::vector<int>& camino) const {
+    double coste = 0.0;
+    if (camino.size() < 2) return 0.0;
+    for (size_t k = 0; k + 1 < camino.size(); ++k) {
+      int u = camino[k];
+      int v = camino[k + 1];
+      double w = matriz_[u - 1][v - 1];
+      if (w != -1.0) coste += w;
+    }
+    return coste;
+  }
 };
 
+// ===================== IMPRESIÓN =====================
 std::ostream& operator<<(std::ostream& os, const Grafo& grafo) {
-  for (const auto& arista : grafo.GetGrafo()) {
-    os << "Nodo 1: " << arista.GetNodo1() << ", Nodo 2: " << arista.GetNodo2()
-       << ", Coste: " << arista.GetCoste() << "\n";
+  const auto& m = grafo.GetMatriz();
+  for (int i = 0; i < grafo.GetNumVertices(); ++i) {
+    for (int j = i + 1; j < grafo.GetNumVertices(); ++j) {
+      if (m[i][j] != -1.0) {
+        os << "Nodo 1: " << (i + 1) << ", Nodo 2: " << (j + 1)
+           << ", Coste: " << std::fixed << std::setprecision(2) << m[i][j]
+           << "\n";
+      }
+    }
   }
   return os;
 }
 
+// ===================== DFS (permite revisitar en distintas ramas)
+// =====================
 void Grafo::BusquedaProfundidad(int nodo_inicio, int nodo_fin,
                                 std::ostream& os) {
-  std::set<int> visitados;    // Nodos ya explorados
-  std::vector<int> pila;      // Pila DFS
-  std::map<int, int> padres;  // Para reconstruir el camino
-  int iteracion = 1;          // Contador de iteraciones
+  std::vector<int> generados;  // ahora vector -> pueden repetirse
+  std::vector<int> inspeccionados;
+  std::vector<int> path;
+  int iteracion = 1;
+  bool encontrado = false;
 
-  // Información inicial
   os << "Número de nodos del grafo: " << vertices << "\n";
-  os << "Número de aristas del grafo: " << grafo_.size() << "\n";
+  os << "Número de aristas del grafo: " << ContarAristas() << "\n";
   os << "Vértice origen: " << nodo_inicio << "\n";
   os << "Vértice destino: " << nodo_fin << "\n";
+  os << "---------------------------------------------------\n";
 
-  pila.push_back(nodo_inicio);
-  padres[nodo_inicio] = -1;
+  std::function<void(int)> dfs = [&](int nodo_actual) {
+    if (encontrado) return;
 
-  while (!pila.empty()) {
-    int nodo_actual = pila.back();
-    pila.pop_back();
+    path.push_back(nodo_actual);
+    generados.push_back(nodo_actual);
 
-    // Agregar nodo a visitados (ahora sí se inspecciona)
-    visitados.insert(nodo_actual);
-
-    // --- Salida por iteración ---
     os << "Iteración " << iteracion++ << "\n";
-
-    // Nodos generados = todos los que han sido descubiertos (pila + visitados)
-    std::set<int> generados = visitados;
-    for (auto v : pila) generados.insert(v);
+    os << "Nodo actual: " << nodo_actual << "\n";
 
     os << "Nodos generados: ";
-    for (auto it = generados.begin(); it != generados.end(); ++it) {
-      if (it != generados.begin()) os << ", ";
-      os << *it;
-    }
+    if (generados.empty())
+      os << "-";
+    else
+      for (size_t i = 0; i < generados.size(); ++i) {
+        if (i > 0) os << ", ";
+        os << generados[i];
+      }
     os << "\n";
 
     os << "Nodos inspeccionados: ";
-    if (visitados.empty()) {
+    if (inspeccionados.empty())
       os << "-";
-    } else {
-      bool first = true;
-      for (auto v : visitados) {
-        if (!first) os << ", ";
-        os << v;
-        first = false;
+    else
+      for (size_t i = 0; i < inspeccionados.size(); ++i) {
+        if (i > 0) os << ", ";
+        os << inspeccionados[i];
       }
-    }
     os << "\n";
+    os << "---------------------------------------------------\n";
 
-    // --- Verificar si encontramos el destino ---
     if (nodo_actual == nodo_fin) {
-      std::vector<int> camino;
-      for (int nodo = nodo_fin; nodo != -1; nodo = padres[nodo]) {
-        camino.push_back(nodo);
-      }
-      std::reverse(camino.begin(), camino.end());
-
+      std::vector<int> camino = path;
       os << "Camino: ";
-      for (size_t i = 0; i < camino.size(); i++) {
+      for (size_t i = 0; i < camino.size(); ++i) {
         if (i > 0) os << " - ";
         os << camino[i];
       }
-      os << "\n";
-
-      os << "Costo: " << (camino.size() - 1) << "\n";
+      double coste_total = CalcularCosteCamino(camino);
+      os << "\nCosto: " << std::fixed << std::setprecision(2) << coste_total
+         << "\n";
+      encontrado = true;
+      path.pop_back();
       return;
     }
 
-    // --- Expandir vecinos ---
-    for (const auto& arista : grafo_) {
-      int vecino = -1;
-      if (arista.GetNodo1() == nodo_actual) {
-        vecino = arista.GetNodo2();
-      } else if (arista.GetNodo2() == nodo_actual) {
-        vecino = arista.GetNodo1();
-      }
-      if (vecino != -1 && padres.find(vecino) == padres.end()) {
-        pila.push_back(vecino);
-        padres[vecino] = nodo_actual;
+    for (int j = 1; j <= vertices && !encontrado; ++j) {
+      if (matriz_[nodo_actual - 1][j - 1] != -1.0) {
+        bool en_ruta = false;
+        for (int v : path)
+          if (v == j) {
+            en_ruta = true;
+            break;
+          }
+        if (!en_ruta) dfs(j);
       }
     }
-  }
 
-  os << "No se encontró un camino desde " << nodo_inicio << " hasta "
-     << nodo_fin << ".\n";
+    inspeccionados.push_back(nodo_actual);
+    path.pop_back();
+  };
+
+  dfs(nodo_inicio);
+
+  if (!encontrado) {
+    os << "No se encontró un camino desde " << nodo_inicio << " hasta "
+       << nodo_fin << ".\n";
+  }
 }
 
+// ===================== BFS (permite revisitar en distintas ramas)
+// =====================
 void Grafo::BusquedaAmplitud(int nodo_inicio, int nodo_fin, std::ostream& os) {
-  std::set<int> visitados;       // Nodos descubiertos
-  std::queue<int> cola;          // Cola BFS
-  std::map<int, int> padres;     // Para reconstruir el camino
-  std::set<int> inspeccionados;  // Nodos ya procesados
-  int iteracion = 1;             // Contador de iteraciones
+  struct Estado {
+    int nodo;
+    int padre_idx;
+  };
+  std::vector<Estado> estados;
+  std::queue<int> q;
+  std::vector<int> generados;
+  std::vector<int> inspeccionados;
+  int iteracion = 1;
 
-  // Información inicial
   os << "Número de nodos del grafo: " << vertices << "\n";
-  os << "Número de aristas del grafo: " << grafo_.size() << "\n";
+  os << "Número de aristas del grafo: " << ContarAristas() << "\n";
   os << "Vértice origen: " << nodo_inicio << "\n";
   os << "Vértice destino: " << nodo_fin << "\n";
+  os << "---------------------------------------------------\n";
 
-  cola.push(nodo_inicio);
-  visitados.insert(nodo_inicio);
-  padres[nodo_inicio] = -1;
+  if (nodo_inicio == nodo_fin) {
+    os << "Iteración 1\nNodo actual: " << nodo_inicio << "\n";
+    os << "Nodos generados: " << nodo_inicio << "\n";
+    os << "Nodos inspeccionados: -\n";
+    os << "Camino: " << nodo_inicio << "\n";
+    os << "Costo: 0.00\n";
+    return;
+  }
 
-  while (!cola.empty()) {
-    int nodo_actual = cola.front();
-    cola.pop();
+  estados.push_back({nodo_inicio, -1});
+  q.push(0);
+  generados.push_back(nodo_inicio);
 
-    // Marcar nodo como inspeccionado
-    inspeccionados.insert(nodo_actual);
+  while (!q.empty()) {
+    int idx = q.front();
+    q.pop();
+    Estado actual = estados[idx];
+    int nodo_actual = actual.nodo;
 
-    // --- Salida por iteración ---
     os << "Iteración " << iteracion++ << "\n";
+    os << "Nodo actual: " << nodo_actual << "\n";
 
-    // Nodos generados = todos los que se han descubierto (visitados)
     os << "Nodos generados: ";
-    {
-      bool first = true;
-      for (auto v : visitados) {
-        if (!first) os << ", ";
-        os << v;
-        first = false;
-      }
-    }
-    os << "\n";
-
-    // Nodos inspeccionados
-    os << "Nodos inspeccionados: ";
-    if (inspeccionados.empty()) {
+    if (generados.empty())
       os << "-";
-    } else {
-      bool first = true;
-      for (auto v : inspeccionados) {
-        if (!first) os << ", ";
-        os << v;
-        first = false;
+    else
+      for (size_t i = 0; i < generados.size(); ++i) {
+        if (i > 0) os << ", ";
+        os << generados[i];
       }
-    }
     os << "\n";
 
-    // --- Verificar si encontramos el destino ---
+    os << "Nodos inspeccionados: ";
+    if (inspeccionados.empty())
+      os << "-";
+    else
+      for (size_t i = 0; i < inspeccionados.size(); ++i) {
+        if (i > 0) os << ", ";
+        os << inspeccionados[i];
+      }
+    os << "\n";
+
     if (nodo_actual == nodo_fin) {
       std::vector<int> camino;
-      for (int nodo = nodo_fin; nodo != -1; nodo = padres[nodo]) {
-        camino.push_back(nodo);
+      for (int cur = idx; cur != -1; cur = estados[cur].padre_idx) {
+        camino.push_back(estados[cur].nodo);
       }
       std::reverse(camino.begin(), camino.end());
-
       os << "Camino: ";
-      for (size_t i = 0; i < camino.size(); i++) {
+      for (size_t i = 0; i < camino.size(); ++i) {
         if (i > 0) os << " - ";
         os << camino[i];
       }
-      os << "\n";
-
-      os << "Costo: " << (camino.size() - 1) << "\n";
+      double coste_total = CalcularCosteCamino(camino);
+      os << "\nCosto: " << std::fixed << std::setprecision(2) << coste_total
+         << "\n";
       return;
     }
 
-    // --- Expandir vecinos ---
-    for (const auto& arista : grafo_) {
-      int vecino = -1;
-      if (arista.GetNodo1() == nodo_actual) {
-        vecino = arista.GetNodo2();
-      } else if (arista.GetNodo2() == nodo_actual) {
-        vecino = arista.GetNodo1();
+    for (int j = 1; j <= vertices; ++j) {
+      if (matriz_[nodo_actual - 1][j - 1] == -1.0) continue;
+      bool ciclo = false;
+      for (int cur = idx; cur != -1; cur = estados[cur].padre_idx) {
+        if (estados[cur].nodo == j) {
+          ciclo = true;
+          break;
+        }
       }
-      if (vecino != -1 && visitados.find(vecino) == visitados.end()) {
-        cola.push(vecino);
-        visitados.insert(vecino);
-        padres[vecino] = nodo_actual;
+      if (!ciclo) {
+        estados.push_back({j, idx});
+        q.push(estados.size() - 1);
+        generados.push_back(j);
       }
     }
+
+    inspeccionados.push_back(nodo_actual);
+    os << "---------------------------------------------------\n";
   }
 
   os << "No se encontró un camino desde " << nodo_inicio << " hasta "

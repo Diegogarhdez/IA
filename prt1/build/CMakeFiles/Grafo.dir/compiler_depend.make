@@ -8,6 +8,7 @@ CMakeFiles/Grafo.dir/main.cc.o: /home/usuario/IA/prt1/main.cc \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
   /usr/include/c++/13/algorithm \
+  /usr/include/c++/13/array \
   /usr/include/c++/13/backward/binders.h \
   /usr/include/c++/13/bit \
   /usr/include/c++/13/bits/algorithmfwd.h \
@@ -34,19 +35,26 @@ CMakeFiles/Grafo.dir/main.cc.o: /home/usuario/IA/prt1/main.cc \
   /usr/include/c++/13/bits/functexcept.h \
   /usr/include/c++/13/bits/functional_hash.h \
   /usr/include/c++/13/bits/hash_bytes.h \
+  /usr/include/c++/13/bits/hashtable.h \
+  /usr/include/c++/13/bits/hashtable_policy.h \
   /usr/include/c++/13/bits/invoke.h \
   /usr/include/c++/13/bits/ios_base.h \
   /usr/include/c++/13/bits/istream.tcc \
   /usr/include/c++/13/bits/iterator_concepts.h \
   /usr/include/c++/13/bits/locale_classes.h \
   /usr/include/c++/13/bits/locale_classes.tcc \
+  /usr/include/c++/13/bits/locale_conv.h \
   /usr/include/c++/13/bits/locale_facets.h \
   /usr/include/c++/13/bits/locale_facets.tcc \
+  /usr/include/c++/13/bits/locale_facets_nonio.h \
+  /usr/include/c++/13/bits/locale_facets_nonio.tcc \
   /usr/include/c++/13/bits/localefwd.h \
   /usr/include/c++/13/bits/max_size_type.h \
   /usr/include/c++/13/bits/memory_resource.h \
   /usr/include/c++/13/bits/memoryfwd.h \
+  /usr/include/c++/13/bits/mofunc_impl.h \
   /usr/include/c++/13/bits/move.h \
+  /usr/include/c++/13/bits/move_only_function.h \
   /usr/include/c++/13/bits/nested_exception.h \
   /usr/include/c++/13/bits/new_allocator.h \
   /usr/include/c++/13/bits/node_handle.h \
@@ -55,6 +63,7 @@ CMakeFiles/Grafo.dir/main.cc.o: /home/usuario/IA/prt1/main.cc \
   /usr/include/c++/13/bits/postypes.h \
   /usr/include/c++/13/bits/predefined_ops.h \
   /usr/include/c++/13/bits/ptr_traits.h \
+  /usr/include/c++/13/bits/quoted_string.h \
   /usr/include/c++/13/bits/range_access.h \
   /usr/include/c++/13/bits/ranges_algo.h \
   /usr/include/c++/13/bits/ranges_algobase.h \
@@ -63,7 +72,9 @@ CMakeFiles/Grafo.dir/main.cc.o: /home/usuario/IA/prt1/main.cc \
   /usr/include/c++/13/bits/ranges_util.h \
   /usr/include/c++/13/bits/refwrap.h \
   /usr/include/c++/13/bits/requires_hosted.h \
+  /usr/include/c++/13/bits/sstream.tcc \
   /usr/include/c++/13/bits/std_abs.h \
+  /usr/include/c++/13/bits/std_function.h \
   /usr/include/c++/13/bits/stl_algo.h \
   /usr/include/c++/13/bits/stl_algobase.h \
   /usr/include/c++/13/bits/stl_bvector.h \
@@ -90,6 +101,7 @@ CMakeFiles/Grafo.dir/main.cc.o: /home/usuario/IA/prt1/main.cc \
   /usr/include/c++/13/bits/string_view.tcc \
   /usr/include/c++/13/bits/stringfwd.h \
   /usr/include/c++/13/bits/uniform_int_dist.h \
+  /usr/include/c++/13/bits/unordered_map.h \
   /usr/include/c++/13/bits/uses_allocator.h \
   /usr/include/c++/13/bits/uses_allocator_args.h \
   /usr/include/c++/13/bits/utility.h \
@@ -102,6 +114,7 @@ CMakeFiles/Grafo.dir/main.cc.o: /home/usuario/IA/prt1/main.cc \
   /usr/include/c++/13/cstddef \
   /usr/include/c++/13/cstdio \
   /usr/include/c++/13/cstdlib \
+  /usr/include/c++/13/ctime \
   /usr/include/c++/13/cwchar \
   /usr/include/c++/13/cwctype \
   /usr/include/c++/13/debug/assertions.h \
@@ -115,11 +128,14 @@ CMakeFiles/Grafo.dir/main.cc.o: /home/usuario/IA/prt1/main.cc \
   /usr/include/c++/13/ext/string_conversions.h \
   /usr/include/c++/13/ext/type_traits.h \
   /usr/include/c++/13/fstream \
+  /usr/include/c++/13/functional \
   /usr/include/c++/13/initializer_list \
+  /usr/include/c++/13/iomanip \
   /usr/include/c++/13/ios \
   /usr/include/c++/13/iosfwd \
   /usr/include/c++/13/iostream \
   /usr/include/c++/13/istream \
+  /usr/include/c++/13/locale \
   /usr/include/c++/13/map \
   /usr/include/c++/13/new \
   /usr/include/c++/13/numbers \
@@ -130,6 +146,7 @@ CMakeFiles/Grafo.dir/main.cc.o: /home/usuario/IA/prt1/main.cc \
   /usr/include/c++/13/pstl/pstl_config.h \
   /usr/include/c++/13/queue \
   /usr/include/c++/13/set \
+  /usr/include/c++/13/sstream \
   /usr/include/c++/13/stack \
   /usr/include/c++/13/stdexcept \
   /usr/include/c++/13/streambuf \
@@ -139,12 +156,14 @@ CMakeFiles/Grafo.dir/main.cc.o: /home/usuario/IA/prt1/main.cc \
   /usr/include/c++/13/tuple \
   /usr/include/c++/13/type_traits \
   /usr/include/c++/13/typeinfo \
+  /usr/include/c++/13/unordered_map \
   /usr/include/c++/13/vector \
   /usr/include/ctype.h \
   /usr/include/endian.h \
   /usr/include/errno.h \
   /usr/include/features-time64.h \
   /usr/include/features.h \
+  /usr/include/libintl.h \
   /usr/include/linux/errno.h \
   /usr/include/locale.h \
   /usr/include/pthread.h \
@@ -227,7 +246,9 @@ CMakeFiles/Grafo.dir/main.cc.o: /home/usuario/IA/prt1/main.cc \
   /usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/gthr-default.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs.h \
   /usr/include/x86_64-linux-gnu/sys/cdefs.h \
@@ -526,9 +547,9 @@ CMakeFiles/Grafo.dir/menu.cc.o: /home/usuario/IA/prt1/menu.cc \
 
 /usr/include/stdlib.h:
 
-/usr/include/stdio.h:
-
 /usr/include/stdc-predef.h:
+
+/usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h:
 
 /usr/include/sched.h:
 
@@ -543,6 +564,8 @@ CMakeFiles/Grafo.dir/menu.cc.o: /home/usuario/IA/prt1/menu.cc \
 /usr/include/ctype.h:
 
 /usr/include/c++/13/vector:
+
+/usr/include/c++/13/unordered_map:
 
 /usr/include/x86_64-linux-gnu/sys/single_threaded.h:
 
@@ -560,33 +583,35 @@ CMakeFiles/Grafo.dir/menu.cc.o: /home/usuario/IA/prt1/menu.cc \
 
 /usr/include/c++/13/stdexcept:
 
+/usr/include/c++/13/sstream:
+
 /usr/include/c++/13/set:
 
 /usr/include/c++/13/queue:
 
-/usr/include/c++/13/bits/ranges_algobase.h:
+/usr/include/x86_64-linux-gnu/bits/wordsize.h:
 
-/usr/include/c++/13/deque:
+/usr/include/c++/13/pstl/pstl_config.h:
 
-/usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
+/usr/include/c++/13/pstl/glue_algorithm_defs.h:
 
-/usr/include/c++/13/system_error:
+/usr/include/c++/13/istream:
 
-/usr/include/c++/13/bits/range_access.h:
+/usr/include/c++/13/iostream:
 
-/usr/include/c++/13/debug/debug.h:
+/usr/include/c++/13/ios:
 
-/usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
+/usr/include/c++/13/initializer_list:
 
-/home/usuario/IA/prt1/grafo.h:
-
-/usr/include/c++/13/bits/ranges_algo.h:
-
-/usr/include/c++/13/bits/ostream_insert.h:
+/usr/include/c++/13/functional:
 
 /usr/include/c++/13/bits/node_handle.h:
 
-/usr/include/c++/13/ios:
+/usr/include/c++/13/bits/locale_facets_nonio.tcc:
+
+/usr/include/stdio.h:
+
+/usr/include/c++/13/bits/mofunc_impl.h:
 
 /usr/include/time.h:
 
@@ -598,6 +623,8 @@ CMakeFiles/Grafo.dir/menu.cc.o: /home/usuario/IA/prt1/menu.cc \
 
 /usr/include/c++/13/bits/invoke.h:
 
+/usr/include/c++/13/bits/locale_facets_nonio.h:
+
 /usr/include/c++/13/bits/locale_classes.tcc:
 
 /usr/include/c++/13/bits/locale_classes.h:
@@ -606,19 +633,37 @@ CMakeFiles/Grafo.dir/menu.cc.o: /home/usuario/IA/prt1/menu.cc \
 
 /usr/include/c++/13/bits/stl_tree.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
+/usr/include/c++/13/numbers:
 
-/usr/include/c++/13/bits/char_traits.h:
+/usr/include/c++/13/bits/ostream.tcc:
 
 /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h:
 
 /usr/include/c++/13/bits/ios_base.h:
+
+/usr/include/c++/13/bits/hashtable.h:
 
 /usr/include/errno.h:
 
 /usr/include/c++/13/stack:
 
 /usr/include/c++/13/bits/functional_hash.h:
+
+/usr/include/c++/13/bits/nested_exception.h:
+
+/usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h:
+
+/usr/include/c++/13/pstl/execution_defs.h:
+
+/usr/include/c++/13/bits/basic_ios.tcc:
+
+/usr/include/c++/13/optional:
+
+/usr/include/c++/13/bits/stl_multimap.h:
+
+/usr/include/c++/13/bits/istream.tcc:
+
+/usr/include/c++/13/bits/exception_ptr.h:
 
 /usr/include/c++/13/bits/codecvt.h:
 
@@ -632,103 +677,21 @@ CMakeFiles/Grafo.dir/menu.cc.o: /home/usuario/IA/prt1/menu.cc \
 
 /usr/include/c++/13/cerrno:
 
+/usr/include/c++/13/new:
+
+/usr/include/c++/13/ext/alloc_traits.h:
+
 /usr/include/c++/13/bits/algorithmfwd.h:
 
 /usr/include/x86_64-linux-gnu/bits/time64.h:
 
 /usr/include/c++/13/bits/basic_ios.h:
 
-/usr/include/c++/13/bits/nested_exception.h:
+/usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
 
-/usr/include/c++/13/backward/binders.h:
+/usr/include/c++/13/bits/char_traits.h:
 
-/usr/include/c++/13/bits/erase_if.h:
-
-/usr/include/c++/13/bits/hash_bytes.h:
-
-/usr/include/c++/13/bits/ranges_util.h:
-
-/usr/include/asm-generic/errno-base.h:
-
-/usr/include/c++/13/algorithm:
-
-/usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h:
-
-/usr/include/x86_64-linux-gnu/c++/13/bits/c++locale.h:
-
-/usr/include/c++/13/bits/ptr_traits.h:
-
-/usr/include/c++/13/bits/fstream.tcc:
-
-/usr/include/alloca.h:
-
-/usr/include/c++/13/cwctype:
-
-/usr/include/c++/13/bits/predefined_ops.h:
-
-/usr/include/c++/13/bits/ranges_cmp.h:
-
-/usr/include/c++/13/iosfwd:
-
-/usr/include/c++/13/cwchar:
-
-/usr/include/x86_64-linux-gnu/bits/errno.h:
-
-/usr/include/wctype.h:
-
-/usr/include/c++/13/exception:
-
-/usr/include/c++/13/bits/enable_special_members.h:
-
-/usr/include/c++/13/bits/basic_string.tcc:
-
-/usr/include/c++/13/bit:
-
-/usr/include/c++/13/bits/alloc_traits.h:
-
-/usr/include/c++/13/bits/concept_check.h:
-
-/usr/include/x86_64-linux-gnu/gnu/stubs.h:
-
-/usr/include/x86_64-linux-gnu/bits/endian.h:
-
-/usr/include/c++/13/bits/deque.tcc:
-
-/usr/include/c++/13/ext/type_traits.h:
-
-/usr/include/c++/13/iostream:
-
-/usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
-
-/home/usuario/IA/prt1/main.cc:
-
-/usr/include/c++/13/bits/move.h:
-
-/usr/include/c++/13/bits/utility.h:
-
-/usr/include/c++/13/bits/stl_function.h:
-
-/usr/include/x86_64-linux-gnu/bits/types.h:
-
-/usr/include/x86_64-linux-gnu/bits/stdint-intn.h:
-
-/usr/include/c++/13/bits/cpp_type_traits.h:
-
-/usr/include/c++/13/bits/ranges_base.h:
-
-/usr/include/c++/13/istream:
-
-/usr/include/x86_64-linux-gnu/bits/endianness.h:
-
-/usr/include/c++/13/bits/basic_string.h:
-
-/usr/include/c++/13/bits/localefwd.h:
-
-/usr/include/c++/13/bits/exception_defines.h:
-
-/usr/include/c++/13/bits/locale_facets.h:
-
-/usr/include/c++/13/bits/cxxabi_forced.h:
+/usr/include/c++/13/bits/hashtable_policy.h:
 
 /usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
 
@@ -742,6 +705,126 @@ CMakeFiles/Grafo.dir/menu.cc.o: /home/usuario/IA/prt1/menu.cc \
 
 /usr/include/c++/13/bits/cxxabi_init_exception.h:
 
+/usr/include/c++/13/backward/binders.h:
+
+/usr/include/x86_64-linux-gnu/bits/errno.h:
+
+/usr/include/wctype.h:
+
+/usr/include/c++/13/exception:
+
+/usr/include/c++/13/bits/hash_bytes.h:
+
+/usr/include/c++/13/array:
+
+/usr/include/c++/13/algorithm:
+
+/usr/include/c++/13/bits/fstream.tcc:
+
+/usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h:
+
+/usr/include/c++/13/map:
+
+/usr/include/c++/13/bits/refwrap.h:
+
+/usr/include/alloca.h:
+
+/usr/include/c++/13/cwchar:
+
+/usr/include/c++/13/bits/enable_special_members.h:
+
+/usr/include/c++/13/bits/basic_string.tcc:
+
+/usr/include/c++/13/bit:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
+
+/home/usuario/IA/prt1/grafo.h:
+
+/usr/include/c++/13/bits/locale_conv.h:
+
+/usr/include/c++/13/bits/alloc_traits.h:
+
+/usr/include/c++/13/bits/concept_check.h:
+
+/usr/include/x86_64-linux-gnu/gnu/stubs.h:
+
+/usr/include/x86_64-linux-gnu/bits/endian.h:
+
+/usr/include/c++/13/bits/deque.tcc:
+
+/usr/include/c++/13/ext/type_traits.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
+
+/home/usuario/IA/prt1/main.cc:
+
+/usr/include/c++/13/bits/move.h:
+
+/usr/include/x86_64-linux-gnu/bits/types.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdint-intn.h:
+
+/usr/include/c++/13/bits/cpp_type_traits.h:
+
+/usr/include/c++/13/ostream:
+
+/usr/include/c++/13/bits/streambuf_iterator.h:
+
+/usr/include/x86_64-linux-gnu/bits/endianness.h:
+
+/usr/include/libintl.h:
+
+/usr/include/c++/13/bits/basic_string.h:
+
+/usr/include/c++/13/bits/move_only_function.h:
+
+/usr/include/c++/13/bits/localefwd.h:
+
+/usr/include/c++/13/bits/exception_defines.h:
+
+/usr/include/c++/13/bits/locale_facets.h:
+
+/usr/include/c++/13/bits/cxxabi_forced.h:
+
+/usr/include/c++/13/bits/erase_if.h:
+
+/usr/include/c++/13/iosfwd:
+
+/usr/include/c++/13/bits/predefined_ops.h:
+
+/usr/include/c++/13/bits/ranges_cmp.h:
+
+/usr/include/asm-generic/errno-base.h:
+
+/usr/include/c++/13/bits/ranges_util.h:
+
+/usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h:
+
+/usr/include/x86_64-linux-gnu/c++/13/bits/c++locale.h:
+
+/usr/include/c++/13/bits/ptr_traits.h:
+
+/usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
+
+/usr/include/c++/13/system_error:
+
+/usr/include/c++/13/bits/range_access.h:
+
+/usr/include/c++/13/debug/debug.h:
+
+/usr/include/c++/13/bits/ostream_insert.h:
+
+/usr/include/c++/13/bits/ranges_algo.h:
+
+/usr/include/c++/13/bits/ranges_algobase.h:
+
+/usr/include/c++/13/bits/stl_function.h:
+
+/usr/include/c++/13/bits/utility.h:
+
+/usr/include/c++/13/bits/ranges_base.h:
+
 /usr/include/c++/13/bits/locale_facets.tcc:
 
 /usr/include/c++/13/bits/requires_hosted.h:
@@ -749,6 +832,16 @@ CMakeFiles/Grafo.dir/menu.cc.o: /home/usuario/IA/prt1/menu.cc \
 /usr/include/c++/13/bits/stl_deque.h:
 
 /usr/include/c++/13/bits/string_view.tcc:
+
+/usr/include/c++/13/cwctype:
+
+/usr/include/c++/13/bits/sstream.tcc:
+
+/usr/include/c++/13/bits/std_function.h:
+
+/usr/include/c++/13/cstdlib:
+
+/usr/include/c++/13/iomanip:
 
 /usr/include/c++/13/bits/postypes.h:
 
@@ -760,9 +853,9 @@ CMakeFiles/Grafo.dir/menu.cc.o: /home/usuario/IA/prt1/menu.cc \
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h:
 
-/usr/include/c++/13/cstddef:
-
 /home/usuario/IA/prt1/menu.h:
+
+/usr/include/c++/13/cstddef:
 
 /usr/include/c++/13/bits/stl_algo.h:
 
@@ -776,19 +869,13 @@ CMakeFiles/Grafo.dir/menu.cc.o: /home/usuario/IA/prt1/menu.cc \
 
 /usr/include/c++/13/bits/stl_heap.h:
 
-/usr/include/c++/13/ext/alloc_traits.h:
-
-/usr/include/c++/13/new:
+/usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h:
 
 /usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
 
 /usr/include/c++/13/bits/functexcept.h:
 
 /usr/include/c++/13/bits/stl_iterator.h:
-
-/usr/include/c++/13/bits/ostream.tcc:
-
-/usr/include/c++/13/numbers:
 
 /usr/include/asm-generic/errno.h:
 
@@ -810,23 +897,21 @@ CMakeFiles/Grafo.dir/menu.cc.o: /home/usuario/IA/prt1/menu.cc \
 
 /usr/include/c++/13/bits/stl_set.h:
 
+/usr/include/c++/13/locale:
+
 /usr/include/c++/13/bits/stl_map.h:
 
 /usr/include/c++/13/bits/stl_uninitialized.h:
+
+/usr/include/c++/13/bits/quoted_string.h:
+
+/usr/include/c++/13/bits/unordered_map.h:
 
 /usr/include/endian.h:
 
 /usr/include/c++/13/bits/max_size_type.h:
 
 /usr/include/c++/13/bits/streambuf.tcc:
-
-/usr/include/c++/13/bits/stl_multimap.h:
-
-/usr/include/c++/13/bits/istream.tcc:
-
-/usr/include/c++/13/bits/exception_ptr.h:
-
-/usr/include/c++/13/optional:
 
 /usr/include/c++/13/bits/stringfwd.h:
 
@@ -860,13 +945,15 @@ CMakeFiles/Grafo.dir/menu.cc.o: /home/usuario/IA/prt1/menu.cc \
 
 /usr/include/c++/13/fstream:
 
-/usr/include/c++/13/bits/charconv.h:
-
 /usr/include/c++/13/bits/stl_pair.h:
+
+/usr/include/c++/13/bits/charconv.h:
 
 /usr/include/c++/13/cstdio:
 
-/usr/include/c++/13/cstdlib:
+/usr/include/c++/13/deque:
+
+/usr/include/c++/13/ctime:
 
 /usr/include/c++/13/debug/assertions.h:
 
@@ -881,27 +968,3 @@ CMakeFiles/Grafo.dir/menu.cc.o: /home/usuario/IA/prt1/menu.cc \
 /usr/include/c++/13/ext/atomicity.h:
 
 /usr/include/c++/13/ext/string_conversions.h:
-
-/usr/include/c++/13/initializer_list:
-
-/usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h:
-
-/usr/include/c++/13/bits/refwrap.h:
-
-/usr/include/c++/13/map:
-
-/usr/include/c++/13/bits/streambuf_iterator.h:
-
-/usr/include/c++/13/ostream:
-
-/usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h:
-
-/usr/include/c++/13/bits/basic_ios.tcc:
-
-/usr/include/c++/13/pstl/execution_defs.h:
-
-/usr/include/c++/13/pstl/glue_algorithm_defs.h:
-
-/usr/include/x86_64-linux-gnu/bits/wordsize.h:
-
-/usr/include/c++/13/pstl/pstl_config.h:
