@@ -1,0 +1,3 @@
+/home/usuario/IA/prt2/laberinto_dinamico/build/CMakeFiles/Laberinto.dir
+/home/usuario/IA/prt2/laberinto_dinamico/build/CMakeFiles/edit_cache.dir
+/home/usuario/IA/prt2/laberinto_dinamico/build/CMakeFiles/rebuild_cache.dir

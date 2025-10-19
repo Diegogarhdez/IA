@@ -1,0 +1,26 @@
+Número de nodos del grafo: 15
+Número de aristas del grafo: 13
+Vértice origen: 8
+Vértice destino: 9
+---------------------------------------------------
+Iteración 1
+Nodo actual: 8
+Nodos generados: 8
+Nodos inspeccionados: -
+---------------------------------------------------
+Iteración 2
+Nodo actual: 2
+Nodos generados: 8, 2
+Nodos inspeccionados: 8
+---------------------------------------------------
+Iteración 3
+Nodo actual: 5
+Nodos generados: 8, 2, 5
+Nodos inspeccionados: 8, 2
+---------------------------------------------------
+Iteración 4
+Nodo actual: 4
+Nodos generados: 8, 2, 5, 4
+Nodos inspeccionados: 8, 2, 5
+---------------------------------------------------
+No se encontró un camino desde 8 hasta 9.

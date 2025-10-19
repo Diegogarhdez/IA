@@ -1,0 +1,9 @@
+Cosas que ha de tener la salida:
+    Coste de A* desde el agente hasta la salida por it
+    Coste final
+    Camino encontrado
+    Metricas: coste, coste acumulado
+    Nodos generados, Nodos inspecionados, nº generados, nºinspecionados, porcentaje de muros
+    número de intentos
+    En caso de que no se haya encontrado camino ponerlo
+    Cambiar P a menos de 0,5 para que no haya problema y no tener que eliminar mucho

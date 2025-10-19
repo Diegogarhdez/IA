@@ -1,0 +1,14 @@
+Laberinto resuelto:
+Número de muros: 8
+Porcentaje de muros: 32%
+Entrada: (4, 4)
+Salida: (1, 0)
+Coste: 40
+Número de nodos generados: 14
+Número de nodos inspeccionados: 13
+Laberinto actual:
+1 0 2 0 0 
+4 2 1 2 0 
+0 1 1 1 2 
+0 1 0 2 0 
+0 1 1 0 3 

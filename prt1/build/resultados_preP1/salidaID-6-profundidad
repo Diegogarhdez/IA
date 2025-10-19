@@ -1,0 +1,61 @@
+Número de nodos del grafo: 15
+Número de aristas del grafo: 13
+Vértice origen: 8
+Vértice destino: 9
+---------------------------------------------------
+Iteración 1
+Nodo actual: 8
+Nodos generados: 8
+Nodos inspeccionados: -
+---------------------------------------------------
+Iteración 2
+Nodo actual: 2
+Nodos generados: 8, 2
+Nodos inspeccionados: -
+---------------------------------------------------
+Iteración 3
+Nodo actual: 5
+Nodos generados: 8, 2, 5
+Nodos inspeccionados: -
+---------------------------------------------------
+Iteración 4
+Nodo actual: 4
+Nodos generados: 8, 2, 5, 4
+Nodos inspeccionados: -
+---------------------------------------------------
+Iteración 5
+Nodo actual: 6
+Nodos generados: 8, 2, 5, 4, 6
+Nodos inspeccionados: 4
+---------------------------------------------------
+Iteración 6
+Nodo actual: 7
+Nodos generados: 8, 2, 5, 4, 6, 7
+Nodos inspeccionados: 4, 6, 5
+---------------------------------------------------
+Iteración 7
+Nodo actual: 11
+Nodos generados: 8, 2, 5, 4, 6, 7, 11
+Nodos inspeccionados: 4, 6, 5
+---------------------------------------------------
+Iteración 8
+Nodo actual: 14
+Nodos generados: 8, 2, 5, 4, 6, 7, 11, 14
+Nodos inspeccionados: 4, 6, 5, 11
+---------------------------------------------------
+Iteración 9
+Nodo actual: 10
+Nodos generados: 8, 2, 5, 4, 6, 7, 11, 14, 10
+Nodos inspeccionados: 4, 6, 5, 11
+---------------------------------------------------
+Iteración 10
+Nodo actual: 3
+Nodos generados: 8, 2, 5, 4, 6, 7, 11, 14, 10, 3
+Nodos inspeccionados: 4, 6, 5, 11, 10, 14, 7, 2
+---------------------------------------------------
+Iteración 11
+Nodo actual: 15
+Nodos generados: 8, 2, 5, 4, 6, 7, 11, 14, 10, 3, 15
+Nodos inspeccionados: 4, 6, 5, 11, 10, 14, 7, 2, 3
+---------------------------------------------------
+No se encontró un camino desde 8 hasta 9.

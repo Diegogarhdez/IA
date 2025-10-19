@@ -19,6 +19,7 @@
 #include <iostream>
 #include <map>
 #include <queue>
+#include <random>
 #include <set>
 #include <stack>
 #include <vector>
@@ -96,11 +97,10 @@ std::ostream& operator<<(std::ostream& os, const Grafo& grafo) {
   return os;
 }
 
-// ===================== DFS (permite revisitar en distintas ramas)
-// =====================
+// ===================== DFS =====================
 void Grafo::BusquedaProfundidad(int nodo_inicio, int nodo_fin,
                                 std::ostream& os) {
-  std::vector<int> generados;  // ahora vector -> pueden repetirse
+  std::vector<int> generados;  // pueden repetirse
   std::vector<int> inspeccionados;
   std::vector<int> path;
   int iteracion = 1;
@@ -150,7 +150,7 @@ void Grafo::BusquedaProfundidad(int nodo_inicio, int nodo_fin,
         os << camino[i];
       }
       double coste_total = CalcularCosteCamino(camino);
-      os << "\nCosto: " << std::fixed << std::setprecision(2) << coste_total
+      os << "\nCosto: " << std::fixed << std::setprecision(3) << coste_total
          << "\n";
       encontrado = true;
       path.pop_back();
@@ -181,15 +181,14 @@ void Grafo::BusquedaProfundidad(int nodo_inicio, int nodo_fin,
   }
 }
 
-// ===================== BFS (permite revisitar en distintas ramas)
-// =====================
+// ===================== BFS =====================
 void Grafo::BusquedaAmplitud(int nodo_inicio, int nodo_fin, std::ostream& os) {
   struct Estado {
     int nodo;
     int padre_idx;
   };
   std::vector<Estado> estados;
-  std::queue<int> q;
+  std::vector<int> q;
   std::vector<int> generados;
   std::vector<int> inspeccionados;
   int iteracion = 1;
@@ -210,12 +209,12 @@ void Grafo::BusquedaAmplitud(int nodo_inicio, int nodo_fin, std::ostream& os) {
   }
 
   estados.push_back({nodo_inicio, -1});
-  q.push(0);
+  q.push_back(0);
   generados.push_back(nodo_inicio);
 
   while (!q.empty()) {
     int idx = q.front();
-    q.pop();
+    q.erase(q.begin());
     Estado actual = estados[idx];
     int nodo_actual = actual.nodo;
 
@@ -254,25 +253,44 @@ void Grafo::BusquedaAmplitud(int nodo_inicio, int nodo_fin, std::ostream& os) {
         os << camino[i];
       }
       double coste_total = CalcularCosteCamino(camino);
-      os << "\nCosto: " << std::fixed << std::setprecision(2) << coste_total
+      os << "\nCosto: " << std::fixed << std::setprecision(3) << coste_total
          << "\n";
       return;
     }
 
+    // Recolectamos los vecinos con su costo
+    std::vector<std::pair<int, double>> vecinos;  // (nodo, costo)
     for (int j = 1; j <= vertices; ++j) {
-      if (matriz_[nodo_actual - 1][j - 1] == -1.0) continue;
+      double costo_arista = matriz_[nodo_actual - 1][j - 1];
+      if (costo_arista == -1.0) continue;
       bool ciclo = false;
-      for (int cur = idx; cur != -1; cur = estados[cur].padre_idx) {
-        if (estados[cur].nodo == j) {
+      for (int k = idx; k != -1; k = estados[k].padre_idx) {
+        if (estados[k].nodo == j) {
           ciclo = true;
           break;
         }
       }
       if (!ciclo) {
-        estados.push_back({j, idx});
-        q.push(estados.size() - 1);
-        generados.push_back(j);
+        vecinos.push_back({j, costo_arista});
       }
+    }
+    srand(1);
+    if (!vecinos.empty()) {
+      // Encontramos el mejor y peor nodo según el costo
+      auto mejor = vecinos[0];
+      auto peor = vecinos[0];
+      for (auto& v : vecinos) {
+        if (v.second <= mejor.second) mejor = v;
+        if (v.second >= peor.second) peor = v;
+      }
+
+      // Selección aleatoria entre el mejor y el peor
+      auto seleccionado = (rand() % 2 == 0) ? mejor : peor;
+
+      // Agregamos solo el nodo seleccionado
+      estados.push_back({seleccionado.first, idx});
+      q.push_back(estados.size() - 1);
+      generados.push_back(seleccionado.first);
     }
 
     inspeccionados.push_back(nodo_actual);
