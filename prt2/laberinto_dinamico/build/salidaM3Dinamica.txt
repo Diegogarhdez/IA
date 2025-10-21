@@ -1,0 +1,46 @@
+Iteración (movimiento) 2 - Agente se mueve a: (3, 3)  g=7
+Camino recorrido por el agente (marcado con 2):
+1 0 0 0 0 
+4 0 1 0 0 
+0 1 1 1 0 
+0 1 0 * 0 
+0 1 1 0 3 
+
+Iteración (movimiento) 4 - Agente se mueve a: (2, 2)  g=14
+Camino recorrido por el agente (marcado con 2):
+0 1 0 1 0 
+4 0 0 0 0 
+1 1 * 1 0 
+0 1 0 * 0 
+0 0 0 0 3 
+
+Iteración (movimiento) 7 - Agente se mueve a: (1, 1)  g=21
+Camino recorrido por el agente (marcado con 2):
+1 1 0 0 1 
+4 * 1 0 0 
+0 0 * 1 0 
+0 0 0 * 0 
+1 0 0 0 3 
+
+Iteración (movimiento) 10 - Agente se mueve a: (1, 0)  g=26
+Camino recorrido por el agente (marcado con 2):
+0 1 0 1 0 
+4 * 1 0 0 
+0 0 * 0 0 
+1 1 0 * 0 
+1 0 0 0 3 
+
+Laberinto dinámico resuelto:
+Número de muros: 6
+Porcentaje de muros: 24%
+Entrada: (4, 4)
+Salida: (1, 0)
+Coste: 26
+Número de nodos generados: 16
+Número de nodos inspeccionados: 10
+Laberinto actual:
+0 1 0 1 0 
+4 * 1 0 0 
+0 0 * 0 0 
+1 1 0 * 0 
+1 0 0 0 3 
