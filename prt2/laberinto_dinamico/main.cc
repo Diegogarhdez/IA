@@ -83,7 +83,7 @@ int main(int argc, char* argv[]) {
     case 4: {
       // Resolución dinámica del laberinto
       int contador = 0;
-      while (laberinto.ResolverLaberintoDinamico(output_file) && contador < 5) {
+      while (!laberinto.ResolverLaberintoDinamico(output_file) && contador < 5) {
         ++contador;
         output_file << "Reintentando resolución dinámica del laberinto (intento "
                     << contador + 1 << ")..." << std::endl;
